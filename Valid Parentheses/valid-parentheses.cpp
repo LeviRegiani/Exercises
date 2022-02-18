@@ -56,6 +56,6 @@ public:
 int main() {
 	Solution mySolution;
 	string string = "{{}[][[[]]]}";
-	cout << mySolution.isValid(string) << "\n";
+	cout << mySolution.isValid(string) << endl;
 	return 0;
 }
