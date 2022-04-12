@@ -39,40 +39,59 @@
 class Solution {
 public:
 	ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-		ListNode *tmp = list1;
 		ListNode *result = nullptr;
 		if (list1 == NULL) {
 			return list2;
 		} else if (list2 == NULL) {
 			return list1;
 		}
-		if (list1->val <= list2->val) {
+		
+		if (list1->val < list2->val) {
 			result = list1;
-			list1 = list1->next;
-			result->next = list2;
-			tmp = result->next;
 		} else {
 			result = list2;
-			list2 = list2->next;
-			result->next = list1;
-			tmp = result->next;
 		}
-		while ((list1->next != NULL) && (list2->next != NULL)) {
-			if ((list1->val <= list2->val) && (list2->val < list1->next->val)) {
-				list1 = list1->next;
-				tmp->next = list2;
+		
+		if (list1->val <= list2->val) {
+			ListNode *tmp = list1->next;
+			if (tmp->val < list2->val) {
+				list1->next = tmp;
+				list1 = tmp;
 				tmp = tmp->next;
 			} else {
+				list1->next = list2;
 				list2 = list2->next;
-				tmp->next = list1;
-				tmp = tmp->next;
+				
 			}
 		}
-		if (list1->val <= list2->val) {
-			list1->next = list2;
-		} else {
-			list2->next = list1;
-		}
-		return result;
+		
+		// if (list1->val <= list2->val) {
+		//     result = list1;
+		//     list1 = list1->next;
+		//     result->next = list2;
+		//     tmp = result->next;
+		// } else {
+		//     result = list2;
+		//     list2 = list2->next;
+		//     result->next = list1;
+		//     tmp = result->next;
+		// }
+		// while ((list1->next != NULL) && (list2->next != NULL)) {
+		//     if ((list1->val <= list2->val) && (list2->val < list1->next->val)) {
+		//         list1 = list1->next;
+		//         tmp->next = list2;
+		//         tmp = tmp->next;
+		//     } else {
+		//         list2 = list2->next;
+		//         tmp->next = list1;
+		//         tmp = tmp->next;
+		//     }
+		// }
+		// if (list1->val <= list2->val) {
+		//     list1->next = list2;
+		// } else {
+		//     list2->next = list1;
+		// }
+		// return result;
 	}
 };
