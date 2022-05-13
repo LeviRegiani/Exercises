@@ -76,11 +76,25 @@ public:
 	}
 };
 
+// Try out some different lists combinations!
 int main() {
 	Solution mySolution;
-	ListNode<ListNode> *list1 = [1, 2, 3];
-	ListNode<ListNode> *list2 = [2, 3, 5];
-	ListNode *result = mySolution.mergeTwoLists(list1, list2);
-	cout << result << "\n";
+	ListNode a(1);
+	ListNode b(3);
+	a.next = &b;
+	ListNode c(5);
+	b.next = &c;
+	ListNode d(2);
+	ListNode e(5);
+	d.next = &e;
+	ListNode f(7);
+	e.next = &f;
+	ListNode *result = mySolution.mergeTwoLists(&a, &d);
+	ListNode *iterr = result;
+	while (iterr) {
+		cout << iterr->val << ' ';
+		iterr = iterr->next;
+	}
+	cout << '\n';
 	return 0;
 }
