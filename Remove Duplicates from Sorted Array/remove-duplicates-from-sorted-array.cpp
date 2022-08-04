@@ -55,7 +55,7 @@ using namespace std;
 
 class Solution {
 public:
-	int removeDuplicates(vector<int>& nums) {
+	int removeDuplicatesSolution1(vector<int>& nums) {
 		int j = 1;
 		for (int i = 0; i < nums.size() - 1; i++) {
 			if (nums[i] != nums[i + 1]) {
@@ -65,6 +65,17 @@ public:
 		}
 		return j;
 	}
+
+	int removeDuplicatesSolution2(vector<int>& nums) {
+        int j = 1;
+        for (int i = 0; i < nums.size() - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                nums[j] = nums[i + 1];
+                j++;
+            }
+        }
+        return j;
+    }
 
 	void print(vector<int>& nums) {
 		cout << "[";
@@ -91,7 +102,7 @@ int main() {
 	nums.push_back(3);
 	cout << "Array: ";
 	mySolution.print(nums);
-	int num = mySolution.removeDuplicates(nums);
+	int num = mySolution.removeDuplicatesSolution1(nums);
 	cout << "New array: ";
 	mySolution.print(nums);
 	return 0;
