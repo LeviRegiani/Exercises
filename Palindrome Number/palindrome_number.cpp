@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include <math.h> 
+#include<math.h> 
 
 // https://leetcode.com/problems/palindrome-number/
 // Given an integer x, return true if x is palindrome integer.

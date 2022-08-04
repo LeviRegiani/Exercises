@@ -1,4 +1,7 @@
 #include<iostream>
+#include<vector>
+
+using namespace std;
 
 // Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears 
 // only once. The relative order of the elements should be kept the same.
@@ -53,6 +56,43 @@
 class Solution {
 public:
 	int removeDuplicates(vector<int>& nums) {
-		
+		int j = 1;
+		for (int i = 0; i < nums.size() - 1; i++) {
+			if (nums[i] != nums[i + 1]) {
+				nums[j] = nums[i + 1];
+				j++;
+			}
+		}
+		return j;
+	}
+
+	void print(vector<int>& nums) {
+		cout << "[";
+		for (auto it = nums.begin(); it != nums.end(); it++) {
+			if (it == nums.end() - 1) {
+				cout << *it;
+			} else {
+				cout << *it << ", ";
+			}
+		}
+		cout << "] \n";
 	}
 };
+
+int main() {
+	Solution mySolution;
+	vector<int> nums;
+	nums.push_back(1);
+	nums.push_back(1);
+	nums.push_back(2);
+	nums.push_back(2);
+	nums.push_back(3);
+	nums.push_back(3);
+	nums.push_back(3);
+	cout << "Array: ";
+	mySolution.print(nums);
+	int num = mySolution.removeDuplicates(nums);
+	cout << "New array: ";
+	mySolution.print(nums);
+	return 0;
+}
