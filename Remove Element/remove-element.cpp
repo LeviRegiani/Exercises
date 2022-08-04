@@ -1,4 +1,7 @@
 #include<iostream>
+#include<vector>
+
+using namespace std;
 
 // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
 // The relative order of the elements may be changed.
@@ -58,16 +61,46 @@
 class Solution {
 public:
 	int removeElement(vector<int>& nums, int val) {
-		int count=0;
+		int count = 0;
 		for (int i = 0; i < nums.size(); i++) {
-			if(nums[i]==val) {
-				nums.erase(nums.begin()+i);
+			if (nums[i] == val) {
+				nums.erase(nums.begin() + i);
 				i--;
-			}
-			else {
-			count++;
+			} else {
+				count++;
 			}
 		}
 		return count;
 	}
+
+	void print(vector<int>& nums) {
+		cout << "[";
+		for (auto it = nums.begin(); it != nums.end(); it++) {
+			if (it == nums.end() - 1) {
+				cout << *it;
+			} else {
+				cout << *it << ", ";
+			}
+		}
+		cout << "] \n";
+	}
 };
+
+int main() {
+	Solution mySolution;
+	vector<int> nums;
+	nums.push_back(0);
+	nums.push_back(1);
+	nums.push_back(2);
+	nums.push_back(2);
+	nums.push_back(3);
+	nums.push_back(0);
+	nums.push_back(4);
+	nums.push_back(2);
+	cout << "Array: ";
+	mySolution.print(nums);
+	int num = mySolution.removeElement(nums, 3);
+	cout << "New array: ";
+	mySolution.print(nums);
+	return 0;
+}
